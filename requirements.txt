@@ -1,0 +1,19 @@
+ipykernel
+redis
+redisvl
+tiktoken
+langgraph
+langchain
+langchain-community
+langchain-openai
+langchain-experimental
+pypdf
+python-dotenv
+openai
+yt_dlp #youtube download
+pydub #split audio from video
+librosa # audio analysis
+neo4j
+numpy
+tavily-python
+pygraphviz
