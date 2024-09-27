@@ -17,3 +17,6 @@ neo4j
 numpy
 tavily-python
 pygraphviz
+langfuse 
+pandas 
+matplotlib

@@ -1,0 +1,81 @@
+services:
+  redis:
+    image: redis/redis-stack:7.2.0-v6
+    container_name: redis
+    ports:
+      - 6379:6379
+      - 8001:8001
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+    volumes:
+      - redis_data:/data
+
+  neo4j:
+    image: neo4j:5.19.0
+    container_name: neo4j
+    environment:
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4J_PLUGINS=["apoc", "graph-data-science"]
+      - NEO4J_AUTH=none
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - neo4j_import:/var/lib/neo4j/import
+      - neo4j_plugins:/plugins
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
+  langfuse-server:
+    image: langfuse/langfuse:2
+    env_file:
+      - .env
+    depends_on:
+      langfuse-db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@langfuse-db:5432/postgres # generate via `openssl rand -hex 32`
+      - NEXTAUTH_SECRET=f64a184b362828e58de859649d29727192a6e449203f74e7bd50df05ca50e58d # generate via `openssl rand -hex 32`
+      - SALT=68355c21dc8a5e7d90b2796aa64ce63bcc40a252771692468d59b7e8df9c7321 # generate via `openssl rand -hex 32`
+      - ENCRYPTION_KEY=c813f0cca908a12ae3d02151d588fc2911c8cb4864899a6884e2fb3a842d7566 # generate via `openssl rand -hex 32`
+      - NEXTAUTH_URL=http://localhost:3000
+      - TELEMETRY_ENABLED=false
+      - LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES=false
+      - LANGFUSE_INIT_USER_EMAIL=${LANGFUSE_USER_EMAIL:-user@example.com}
+      - LANGFUSE_INIT_USER_NAME=${LANGFUSE_USER_NAME:-John Doe}
+      - LANGFUSE_INIT_USER_PASSWORD=${LANGFUSE_USER_PASSWORD:-password}
+      - LANGFUSE_INIT_PROJECT_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY:-lf_pk_1234567890}
+      - LANGFUSE_INIT_PROJECT_SECRET_KEY=${LANGFUSE_SECRET_KEY:-lf_sk_1234567890}
+      - LANGFUSE_INIT_PROJECT_NAME=My Project
+      - LANGFUSE_INIT_PROJECT_ID=my-project
+      - LANGFUSE_INIT_ORG_NAME=My Org
+      - LANGFUSE_INIT_ORG_ID=my-org
+
+  langfuse-db:
+    image: postgres
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - langfusedb_data:/var/lib/postgresql/data
+
+volumes:
+  langfusedb_data:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_import:
+  neo4j_plugins:
+  redis_data:
