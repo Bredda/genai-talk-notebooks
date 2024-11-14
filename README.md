@@ -24,17 +24,17 @@ Ces démos utilisent la librairie [Langchain](https://www.langchain.com/)
 - **07-Classification**
   - 07.01-Document tagging
 
-### Usage
+## Usage
 
 L'ensemble des démos utilise des modèles OpenAI. Se reporter à la documentation `Langchain` pour utiliser d'autres fournisseurs ou des modèles locaux.
 
-Certaines démos s'appuyent sur des services tierces (Redis, Neo4j etc.). Pour facliter les choses, un fichier `docker-compose.yaml` est disponible à la racine du dépôt mettant à disposition:
+Certaines démos s'appuyent sur des services tiers (Redis, Neo4j etc.). Pour facliter les choses, un fichier `docker-compose.yaml` est disponible à la racine du dépôt mettant à disposition en local:
 
 - Redis - vector store rag et mémoire - Dashboard sur http://localhost:8001/
 - Neo4j - outil de graphe de connaissance - Dashboard sur http://localhost:7474/browser/
 - Langfuse (+ db psotgres) - Observabilité - Dashbaord sur http://localhost:3000
 
-Pour exécuter les notebooks (prérequis: python et Jupyter):
+Pour exécuter les notebooks (prérequis: installation de python et Jupyter):
 
 1. Dupliquer .env.example et renommer en .env
 2. Renseigner les clé nécessaires dans ce fichier .env
