@@ -36,7 +36,7 @@ services:
       langfuse-db:
         condition: service_healthy
     ports:
-      - "3000:3000"
+      - "3003:3000"
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@langfuse-db:5432/postgres # generate via `openssl rand -hex 32`
       - NEXTAUTH_SECRET=f64a184b362828e58de859649d29727192a6e449203f74e7bd50df05ca50e58d # generate via `openssl rand -hex 32`

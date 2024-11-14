@@ -7,6 +7,7 @@ langchain
 langchain-community
 langchain-openai
 langchain-experimental
+langfuse 
 pypdf
 python-dotenv
 openai
@@ -16,7 +17,9 @@ librosa # audio analysis
 neo4j
 numpy
 tavily-python
-pygraphviz
 langfuse 
 pandas 
 matplotlib
+duckduckgo_search
+bs4
+html2text
