@@ -8,18 +8,18 @@ langchain-community
 langchain-openai
 langchain-experimental
 langfuse 
-pypdf
+pypdf #PyPDF2 - A Python library for reading PDF files.
 python-dotenv
 openai
 yt_dlp #youtube download
 pydub #split audio from video
 librosa # audio analysis
-neo4j
-numpy
-tavily-python
-langfuse 
+neo4j # Neo4j - A python library for Neo4j graph database
+numpy 
+tavily-python #Tavily - A Python library for Tavily API, a platform for AI-friendly web search.
+langfuse #Langfuse - A Python library for Langfuse API, a platform for Langchain/Langgraph observability.
 pandas 
 matplotlib
-duckduckgo_search
-bs4
-html2text
+duckduckgo_search #DuckDuckGo Search - A Python library for DuckDuckGo search engine.
+bs4 #BeautifulSoup - A Python library for pulling data out of HTML and XML files.
+html2text #HTML2Text - A Python library for converting HTML to Markdown.

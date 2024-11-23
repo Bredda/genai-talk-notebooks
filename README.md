@@ -4,7 +4,7 @@ Ce repository accompagne le talk [Younup](https://www.younup.fr/) intitulé [IA 
 
 Il contient l'ensemble des démos abordées ainsi que d'autres exemples plus avancés sous forme de [notebook Jupyter](https://jupyter.org/).
 
-Ces démos utilisent la librairie [Langchain](https://www.langchain.com/)
+Ces démos illusrent l'orchestration de LLM via [Langchain](https://www.langchain.com/) et [Langgraph](https://langchain-ai.github.io/langgraph/)
 
 ## Contenu
 
@@ -19,6 +19,8 @@ Ces démos utilisent la librairie [Langchain](https://www.langchain.com/)
   - 04.01-RAG knowledge graph
 - **05-LangGraph**
   - 05.01-Multi agent collaboration
+  - 05.02-Perplexity clone
+  - 05.03-NotebokkLM podcast clone
 - **06-Observabilitty**
   - 06.01-Langfuse
 - **07-Classification**
@@ -34,9 +36,12 @@ Certaines démos s'appuyent sur des services tiers (Redis, Neo4j etc.). Pour fac
 - Neo4j - outil de graphe de connaissance - Dashboard sur http://localhost:7474/browser/
 - Langfuse (+ db psotgres) - Observabilité - Dashbaord sur http://localhost:3000
 
-Pour exécuter les notebooks (prérequis: installation de python et Jupyter):
+Pour exécuter les notebooks
 
+0. Prérequis: utilisation de python >= 3.12 (certaines démos ne fonctionneront pas correctement avec une vresion inférieure)
 1. Dupliquer .env.example et renommer en .env
 2. Renseigner les clé nécessaires dans ce fichier .env
 3. Installer les dépendences python: `pip install -r requirements.txt`
 4. Lancer les services tiers: `docker-compose up -d`
+
+## Note
