@@ -4,44 +4,29 @@ Ce repository accompagne le talk [Younup](https://www.younup.fr/) intitulé [IA 
 
 Il contient l'ensemble des démos abordées ainsi que d'autres exemples plus avancés sous forme de [notebook Jupyter](https://jupyter.org/).
 
-Ces démos illusrent l'orchestration de LLM via [Langchain](https://www.langchain.com/) et [Langgraph](https://langchain-ai.github.io/langgraph/)
-
-## Contenu
-
-- **01-Basics**
-  - 01-Simple QA chat with memory
-- **02-Retrieval Augmented Generation**
-  - 02.01-RAG Basics
-  - 02.02-RAG youtube
-- **03-Agents**
-  - 03.02-Simple Agent with Langchain
-- **04-Advanced RAG**
-  - 04.01-RAG knowledge graph
-- **05-LangGraph**
-  - 05.01-Multi agent collaboration
-  - 05.02-Perplexity clone
-  - 05.03-NotebokkLM podcast clone
-- **06-Observabilitty**
-  - 06.01-Langfuse
-- **07-Classification**
-  - 07.01-Document tagging
+Ces démos illusrent l'orchestration de LLM via différentes librairies, type [Langchain](https://www.langchain.com/), [Langgraph](https://langchain-ai.github.io/langgraph/) ou encore [SmolaAgent](https://huggingface.co/docs/smolagents/index)
 
 ## Usage
 
-L'ensemble des démos utilise des modèles OpenAI. Se reporter à la documentation `Langchain` pour utiliser d'autres fournisseurs ou des modèles locaux.
+Les démos Langchain utilisent des modèles issus d'OpenAI. Langchain étant model-agnostic il est donc très facile de switcher sur un modèle ou provider différentes si besoin.
 
-Certaines démos s'appuyent sur des services tiers (Redis, Neo4j etc.). Pour facliter les choses, un fichier `docker-compose.yaml` est disponible à la racine du dépôt mettant à disposition en local:
+Les démos SmolAgent utilsient le modèle Qwen/Qwen2.5-Coder-32B-Instruct d'HuggingFace. Ce modèle est gratuit et nécessite seulement un compte avec clé d'api (à rensigner dans le fichier `.env`)
+
+Certaines démos s'appuyent sur des services tiers (Redis, Langfuse etc.). Pour facliter les choses, un fichier `docker-compose.yaml` est disponible à la racine du dépôt mettant à disposition en local:
 
 - Redis - vector store rag et mémoire - Dashboard sur http://localhost:8001/
-- Neo4j - outil de graphe de connaissance - Dashboard sur http://localhost:7474/browser/
 - Langfuse (+ db psotgres) - Observabilité - Dashbaord sur http://localhost:3000
 
 Pour exécuter les notebooks
 
-0. Prérequis: utilisation de python >= 3.12 (certaines démos ne fonctionneront pas correctement avec une vresion inférieure)
+0. Prérequis: utilisation de python >= 3.11 (certaines démos ne fonctionneront pas correctement avec une version inférieure)
 1. Dupliquer .env.example et renommer en .env
 2. Renseigner les clé nécessaires dans ce fichier .env
 3. Installer les dépendences python: `pip install -r requirements.txt`
 4. Lancer les services tiers: `docker-compose up -d`
 
 ## Note
+
+Le dossier `99-Apps` a pour objectif de fournir à terme des tentatives de reproduction d'outils intéressants: type [Perplexity](https://www.perplexity.ai/), la fonctionnlaité de Podcast de [NotbookLm](https://notebooklm.google.com/?), etc.
+
+C'est pour le moment une partie Work in progress.

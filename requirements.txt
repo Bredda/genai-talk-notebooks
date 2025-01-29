@@ -1,4 +1,5 @@
 ipykernel
+gradio # Gradio - A Python library for creating UIs inside notebooks.
 redis
 redisvl
 tiktoken
